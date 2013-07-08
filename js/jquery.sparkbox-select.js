@@ -17,10 +17,12 @@
           $sbSelect = $this.siblings('.sb-select');
       
       if (this.selectedIndex != -1) {
+          var selectedOption = this[this.selectedIndex].value;
+
         $sbSelect.val(this[this.selectedIndex].innerHTML);
-      
+
         $dropdown.children().removeClass('selected')
-          .filter(':contains(' + this[this.selectedIndex].innerHTML + ')').addClass('selected');
+          .filter(function() { return ($(this).data('value') === selectedOption) }).addClass('selected');
       }
     };
     
